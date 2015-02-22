@@ -15,12 +15,14 @@ dataset <- ldply(toBeMerged, read.table)                          ###   With thi
 ###
 ###       First, I added the column headings to replace the V1,V2 etc variable names, with their approriate names stored in 'features.txt'
 ###       Because I used readLines, the table in features.txt grabbed the numbers from column 1 and concatinated it with the actual variable name in column 2. e.g. "561 angle(Z,gravityMean)"  
+###       I also removed an mistake in namine via gsub to replace 'BodyBody' with 'Body' for some variable names. see codeline 25.
 ###       This was ok for now as I will have to clean up the variable names in a further step anyway.
 ###
 ###       Secondly, I wanted to add the Subject and Activity Variables in too.
 fileList2 <- list.files("./UCI HAR Dataset", full.names = TRUE)   ###   Read in the location of the file of interest
 colHeadingsFile <- fileList2[grepl("features.txt", fileList2)]    ###   grep the features.txt file's location and store as a string
 colHeadings <- readLines(colHeadingsFile)                         ###   Read contents of features.txt and store in a char vector
+colHeadings <- gsub("BodyBody", "Body", colHeadings)              ###   removed a double up of 'BodyBody' and replaced sith 'Body' affecting some variables
 colnames(dataset) <- colHeadings                                  ###   setting the names of the 561 columns
 
 ###   This code below will take the train and test activity lables located in diff directories, combine them together and then combine it to the existing dataset
@@ -74,18 +76,4 @@ write.table(tidyDataset, "tidyDataset.txt", row.names = FALSE)  ##  Writes out t
 ###   This just cleans up all the old variables and data that are not needed anymore
 rm("combinedActivity","combinedSubjects","testActivity","testSubjects","trainActivity","trainSubjects")
 rm("activityFiles", "activitylabels","activityLabelsDir","colHeadings","colHeadingsFile","colHeadingsUpdated","directories","fileList","fileList2", "i", "subjectFiles", "toBeMerged")
-
-#############################################################################
-##  considerations for step 4:
-##  fix the errors in the original variable names where they do not match their own codebook (i.e. BodyBody) 
-##  make the names safe to use in R
-##  expand f and t (and maybe Acc) to something readable. 
-
-gg <- c("a1")
-
-for (i in nrow(x)) {
-  gg <- append(gg, i)
-}
-  
-  
-
+rm("dataset")
