@@ -14,6 +14,7 @@ The datasets original variable names have been added and updated to be more desc
   - spaces, brackets and hyphens have been removed and the variable names have been made safe to be used in R.
   - 'f' and 't' prefix's have been expanded to be more descriptive and readable.
   - Finally, a tidy dataset is produced and written out as a text file ("tidyDataset.txt") to the working directory with the average (mean) of each variable for each activity and each subject.
+
 **Further explanation of the specific methods used and processes taken are described in the comments in "run_anaysis.R".**
 
 #Included Files 
