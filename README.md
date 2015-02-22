@@ -15,7 +15,7 @@ The datasets original variable names have been added and updated to be more desc
   - variable names where made more descriptive (t and f prefix's have been expanded and Acc was expanded to Accelerate)
   - Finally, a tidy dataset is produced and written out as a text file ("tidyDataset.txt") to the working directory with the average (mean) of each variable for each activity and each subject.
 
-**Further explanation of the specific methods used and processes taken are described in the comments in "run_anaysis.R".**
+**Further explanation of the specific methods used and processes taken are described in the comments in "run_analysis.R".**
 
 ##Included Files 
   - README.md:        This file, a summary of the files, script and analysis performed.
