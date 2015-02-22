@@ -16,18 +16,18 @@ After selection for only the 'mean' and 'std' variables, the variables where par
   - 'mean' This is the average function we are interested in
   - 'std' Standard Deviation function we are interested in
   
-  - prefix 't' is for time, it has been replaced with 'time' in the tidyDataset
-  - prefix 'f' notes frequency domain signal variables (processed by Fast Fourier Transform (FFT)) it has been replaced with 'FFT' in our tidy dataset
-  - 'BodyAcceleration' in variable names is because the acceleration signal was separated into body and gravity acceleration signals 
-  - 'GravityAcceleration' in variable names is because the acceleration signal was separated into body and gravity acceleration signals 
-  - 'Jerk' derivied from 'body linear acceleration and angular velocity were derived in time to obtain Jerk signals'
-  - 'BodyGyro' variables come from the base readings from the gyroscope, for body signal as opposed to gravity
-  - 'Mag' Magnitude, three-dimensional signals
+  - prefix 't' was for time, it has been replaced with **'time'** in the tidyDataset
+  - prefix 'f' notes frequency domain signal variables (processed by Fast Fourier Transform (FFT)) it has been replaced with **'FFT'** in our tidy dataset
+  - **'BodyAcceleration'** in variable names is because the acceleration signal was separated into body and gravity acceleration signals 
+  - **'GravityAcceleration'** in variable names is because the acceleration signal was separated into body and gravity acceleration signals 
+  - **'Jerk'** derivied from 'body linear acceleration and angular velocity were derived in time to obtain Jerk signals'
+  - **'BodyGyro'** variables come from the base readings from the gyroscope, for body signal as opposed to gravity
+  - **'Mag'** Magnitude, three-dimensional signals
 
-  - 'X' or 'Y' or 'Z' indicates a reading from specifc dimension
-  - 'XYZ' a 3D reading
+  - **'X'** or **'Y'** or **'Z'** indicates a reading from specifc dimension
+  - **'XYZ'** a 3D reading
 
-##Variables from tidyData
+##Table of Variables From tidyData
 | Column Number | Variable Name                   | Variable Type | Description                                                                                                                                                              |
 |---------------|---------------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1             | subjects                        | int           | values are 1 - 30, representing the 30 individuals that participated in the original study.                                                                              |
