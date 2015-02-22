@@ -61,6 +61,12 @@ dataset$activity <- cut(dataset$activity, breaks = seq(0,6, by = 1), labels = ac
 ###       I have been doing a bit of this in step 2 above but have built on it abit here.
 names(dataset) <- make.names(names(dataset), unique = TRUE)       ###   Make syntastically correct names for columns and check that they are unique
 
+gg <- names(dataset)                      ##  Store var names in 'gg' so we can edit them to make them more discriptive
+gg <- gsub("^t", "time", gg)              ##  expanded 't' to 'time'
+gg <- gsub("^f", "FFT", gg)               ##  expanded 'f' to 'FFT' for 'Fast Fourier Transform' .... whatever that means!
+gg <- gsub("Acc", "Acceleration", gg)     ##  expanded 'Acc' to 'Accelerate' to make var names a bit more human readable
+names(dataset) <- gg                      ##  now that we have made the changes we want to the var names stored in 'gg' lets replace the var names in 'dataset'
+
 
 ###   5.  From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 dataset<-aggregate(dataset, by = list(dataset$subjects, dataset$activity), FUN = mean)  ###   subsetted data set by subject then activity, computed the mean on each variable and returned the result, 
@@ -76,4 +82,4 @@ write.table(tidyDataset, "tidyDataset.txt", row.names = FALSE)  ##  Writes out t
 ###   This just cleans up all the old variables and data that are not needed anymore
 rm("combinedActivity","combinedSubjects","testActivity","testSubjects","trainActivity","trainSubjects")
 rm("activityFiles", "activitylabels","activityLabelsDir","colHeadings","colHeadingsFile","colHeadingsUpdated","directories","fileList","fileList2", "i", "subjectFiles", "toBeMerged")
-rm("dataset")
+rm("dataset", "gg")

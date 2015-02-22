@@ -12,6 +12,7 @@ Each activity value has been altered to reflect a discriptive activity name inst
 The datasets original variable names have been added and updated to be more descriptive such that:
   - errors in the original variable names where they do not match their own codebook (i.e. BodyBody) have been fixed.
   - spaces, brackets and hyphens have been removed and the variable names have been made safe to be used in R.
+  - variable names where made more descriptive (t and f prefix's have been expanded and Acc was expanded to Accelerate)
   - Finally, a tidy dataset is produced and written out as a text file ("tidyDataset.txt") to the working directory with the average (mean) of each variable for each activity and each subject.
 
 **Further explanation of the specific methods used and processes taken are described in the comments in "run_anaysis.R".**
