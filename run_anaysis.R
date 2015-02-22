@@ -8,7 +8,7 @@ library(dplyr)
 directories <- list.dirs("./UCI HAR Dataset", recursive = FALSE)
 fileList<-list.files(directories, full.names = TRUE)
 toBeMerged <- fileList[grepl("X_t", fileList)]                    ###   Created a list of the locations of the files that require mergeing into one dataFrame.
-dataset <- ldply(toBeMerged, read.table)                          ###   With this list, create a df my merging the two files together and store the result in 'dataset'
+dataset <- ldply(toBeMerged, read.table)                          ###   With this list, create a df by merging the two files together and store the result in 'dataset'
 
 
 ###   2.  Extracts only the measurements on the mean and standard deviation for each measurement. 
@@ -37,8 +37,8 @@ trainSubjects <- read.table(subjectFiles[2])
 combinedSubjects <- rbind(testSubjects,trainSubjects)
 dataset[,"563 subjects"] <- combinedSubjects                      ###   added data to the end of the df. Kept the naming convention with number prefixed for now
 
-dataset <- tbl_df(dataset)                                        ###   converted dataset to tbl_df from package:dplyr so I could use select() to keep the mean and std variables and drop the rest. I need to take care here too as I think select re-arranges the variables too.
-dataset <-select(dataset, contains("activity"),contains("subjects"),contains("mean"), contains("std")) 
+dataset <- tbl_df(dataset)                                        ###   converted dataset to tbl_df from package:dplyr so I could use select() to keep the mean and std variables and drop the rest. I chose to drop Angle() and meanFreq() functions as I explained in the README under the ##Assumptions heading. I need to take care here too as I think select re-arranges the variables too.
+dataset <-select(dataset, contains("activity"),contains("subjects"),contains("mean"), contains("std"), -contains("angle"), -contains("freq")) 
 
 ###   The below for loop, iterates through dataset, splits the variable names at the space storing the actual variable name, then appends the correct variable name to a char vector that I used to overwrite the current variable names in 'dataset'.
 for (i in 1:length(dataset)) {
@@ -80,4 +80,12 @@ rm("activityFiles", "activitylabels","activityLabelsDir","colHeadings","colHeadi
 ##  fix the errors in the original variable names where they do not match their own codebook (i.e. BodyBody) 
 ##  make the names safe to use in R
 ##  expand f and t (and maybe Acc) to something readable. 
+
+gg <- c("a1")
+
+for (i in nrow(x)) {
+  gg <- append(gg, i)
+}
+  
+  
 
